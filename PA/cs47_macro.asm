@@ -68,6 +68,19 @@
 	ori $reg, $lo		# then load lower part of the reg
 	.end_macro
 	
+	# Macro : push push the contant in the register into the stack
+	# Usage: push($reg)
+	.macro push($reg)
+	sw	$reg, 0x0($sp)	# push content of $sp into $s0
+	addi	$sp, $sp, -4	# decrease $sp by 4
+	.end_macro
+	
+	# Macro : pop the content form the stack into using register
+	# Usage: pop($reg)
+	.macro pop($reg)
+	addi	$sp, $sp, +4	# increase stack pointer to make it pointing at the right thing
+	lw	$reg, 0x0($sp)	# load content pointed by the stack pointer
+	.end_macro
 	
 	
 	

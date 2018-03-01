@@ -23,6 +23,25 @@ main:
 	lh	$s1, var_b # R[s1] = M[var_b](15:0)
 	lb      $s2, var_c # R[s2] = M[var_c](7:0)
 	lw      $s3, var_d # R[s3] = M[var_d](31:0)
+	
+	# PUSH
+	sw	$s0, 0x0($sp)	# Store the data stack pointing at
+	addi	$sp, $sp, -4	# move the pointer downword
+	sw	$s1, 0x0($sp)	# Store the data stack pointing at
+	addi	$sp, $sp, -4	# move the pointer downword
+	sw	$s2, 0x0($sp)	# Store the data stack pointing at
+	addi	$sp, $sp, -4	# move the pointer downword
+	sw	$s3, 0x0($sp)	# Store the data stack pointing at
+	addi	$sp, $sp, -4	# move the pointer downword
+	# POP
+	addi	$sp, $sp, +4	# firs increase the stack pointer(now pointing at storage)
+	lw	$t0, 0x0($sp)	# load word into register from the storage
+	addi	$sp, $sp, +4	# firs increase the stack pointer(now pointing at storage)
+	lw	$t1, 0x0($sp)	# load word into register from the storage
+	addi	$sp, $sp, +4	# firs increase the stack pointer(now pointing at storage)
+	lw	$t2, 0x0($sp)	# load word into register from the storage
+	addi	$sp, $sp, +4	# firs increase the stack pointer(now pointing at storage)
+	lw	$t3, 0x0($sp)	# load word into register from the storage
         
 	# System exit
 	exit
