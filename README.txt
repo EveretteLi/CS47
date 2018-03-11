@@ -2,7 +2,7 @@ CS47 homework folder
 ======================
 upload history
 ----------------------
-HW1 Q1 Q2 Q3 Q4
+HW1 Q1 Q2 Q3 Q4 Q5 Q6 Q7
 ----------------------
 PA	01
 	02

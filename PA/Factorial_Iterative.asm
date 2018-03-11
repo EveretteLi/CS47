@@ -38,7 +38,10 @@ fact:
 	
 	# if t2 = 0 end iteration
 while:	blez $t2, end_while		# if t2 is less than or equal to 0 -> end
-	mulo $t3, $t3, $t2		# t3(n) = t3(n) * t2(n-1)
+	multu $t3, $t2		# t3(n) = t3(n) * t2(n-1)
+	mfhi $t4
+	mflo $t5
+	or   $t3, $t4, $t5
 	addi $t2, $t2, -1		# reduce t2 by 1
 	j	while			# jump to while
 	
