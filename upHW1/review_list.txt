@@ -1,0 +1,55 @@
+review list:
+
+(prepare calculator and learn how to use!!)
+(mod / div / dif_based_num)
+
+1> How to determine the size of a memory?
+	the possible combination out of address bus?
+	>> 2^#address bus
+	>> address bus representing the number of address place, while the actual size is (# of place)  * (width of each memory)
+
+
+2> How the clock and read/write system works?
+	>> make sure all the requests that consume clock cycle has been counted.
+
+3> When decimal to dif based number, the first remainder will be the lease significant digit.
+
+4> The rule determine the size of instructions register fields: has enough space so that all registers can be represented. log2(#register)
+
+5> How to determine <shamt> for R type instruction?
+	the propose of <shamt> is to shift the data(outcome) for # amount in the register. 
+	So the size of it is related to the size of register. 
+	(e.g. 64-bit register -> log2(64)-bit <shamt> space.)
+
+7> (Question-HW1-3.b)
+	why there's a "-1" in the address range [0, (2^48-1)]?
+
+8> What is a TPA?
+	
+9> Power address text section for 32-bit MIPS: TPA = 0x00400000
+to fine the address what stores the Symbol Table:
+	(actual location) = TPA + 4(word length) * (label index -1)
+
+10> Remember to save space for the unused memory!!
+
+11> because ".asciiz" will ends itself so add "null" after the contains which just a 0x00 in the memory.
+
+12> (Question-HW1-6) Well .asciiz follow the little endian format? for just first in first save.
+
+13> frame size = total size of registers that have been stored.
+=====================================================================================================================
+class note:
+
+for memory range how to get the largest address?
+	if the memory is 18-bit width: max is when all filled with 1s
+[11 1111 1111 1111 1111] - 0011 1111 1111 1111 1111 -> 0x3FFF
+
+review how things are laid in memory: e.g. word always store in a address that is %4 = 0; half word? %2 = 0
+=====================================================================================================================
+using a special signal when addressing IO divides - IO mapped IO
+
+just use different address segment for IO - memory mapped IO
+
+time period of a system clock?
+
+range for n- bit 2's complement binary number [-2^(n-1), 2^(n-1)-1]

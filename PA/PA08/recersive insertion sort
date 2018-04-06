@@ -1,0 +1,31 @@
+recersive insertion sort:
+
+insertion_sort void (array, number_element):
+	previous_element = array[number_element]
+	return insertion_sort_recursive(array, number_element, previous_element)
+end
+
+insertion_sort_recursive Array (array, number_element, previous_element):
+	if number_element == 0:
+		return null
+	current = array[number_element-1]
+	array = array[0, number_element-1]
+	number_element = number_element - 1
+
+	if(current > previous_element):
+		keep_invariante(current, previous_element, number_element+1)
+	return insertion_sort_recursive(array, number_element, array[number_element])
+end
+
+keep_invariante void (current, previous_element, index_of_current):
+	if index_of_current == array.length:
+		return null
+	temp = current
+	current = previous_element
+	previous_element = temp
+
+	temp = array[index_of_current+1]
+	index_of_current = index_of_current + 1
+	if current > temp:
+		return keep_invariante(current, temp, index_of_current)
+

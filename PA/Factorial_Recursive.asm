@@ -11,8 +11,8 @@ msg3: 	.asciiz "Enter a +ve number : "
 main: 
 	print_str(msg3)
 	read_int($s0)
-	move $a0, $s0 # Pass the argument to function
-	jal fact # Change the control to function
+	move $a0, $s0 	# Pass the argument to function
+	jal fact 	# Change the control to function
 main_L1:
 	move $s1, $v0
 	print_str(msg1)

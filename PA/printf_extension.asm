@@ -10,6 +10,7 @@ str_name: .asciiz "John Adams"
 int_age: .word 26
 str_food: .asciiz "pizza"
 int_year: .word 2015
+format3: .asciiz "My name is \\%s\nI am \\%d year old\nI love to eat \\%s\nI will graduate in \\%d\n"
 
 .text
 
@@ -46,8 +47,19 @@ main:
 	pop($t0)
 	pop($t0)
 	
+	la	$a0, format3
+	jal 	printf
 	exit
-	
+
+#-----------------------------------------------
+# C style signature 'printf(<format string>,<arg1>,
+#			 <arg2>, ... , <argn>)'
+#
+# This routine supports %s and %d only
+#
+# Argument: $a0, address to the format string
+#	    All other addresses / values goes into stack
+#-----------------------------------------------
 #-----------------------------------------------
 # C style signature 'printf(<format string>,<arg1>,
 #			 <arg2>, ... , <argn>)'
@@ -73,10 +85,18 @@ printf_loop:
 	lbu	$a0, 0($s0)
 	beqz	$a0, printf_ret
 	beq     $a0, '%', printf_format
+	beq	$a0, '\\', printf_slash		# if hit '\' then ignore the upcoimg %
 	# print the character
-	li	$v0, 11
+fix:
+		li	$v0, 11
 	syscall
 	j 	printf_last
+	
+printf_slash:
+	addi	$s0, $s0, 1			# move farword
+	lbu	$a0, 0($s0)			# get the % char
+	j	fix
+	
 printf_format:
 	addi	$s1, $s1, 1 		# increase argument index
 	mul	$t0, $s1, 4
@@ -110,4 +130,3 @@ printf_ret:
 	addi	$sp, $sp, 24
 	jr $ra
 	
-
