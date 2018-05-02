@@ -1,0 +1,30 @@
+.include "cs47_common_macro.asm"
+.include "cs47_proj_macro.asm"
+.include "CS47_proj_alu_logical.asm"
+
+.data
+	message: .asciiz "result: \n"
+	newline: .asciiz " \n"
+	a0: .asciiz "a0: \n"
+	a1: .asciiz "a1: \n"
+	
+.text 
+.globl main
+main:
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
